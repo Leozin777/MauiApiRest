@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApiRest.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="5" Spacing="10">
+            
+            <Entry Placeholder="Categoria Id" Text="{Binding CategoriaInfoId}"/>
+            <Entry Placeholder="Categoria Nome" Text="{Binding CategoriaInfoNome}"/>
+            
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
+                <Button Text="Load" Command="{Binding GetCategoriasCommand}"/>
+                <Button Text="Get" Command="{Binding GetCategoriaCommand}"/>
+                <Button Text="Add" Command="{Binding AddCategoriaCommand}"/>
+                <Button Text="Remove" Command="{Binding DeleteCategoriaCommand}"/>
+                <Button Text="Update" Command="{Binding UpdateCategoriaCommand}"/>
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="ColView1" ItemsSource="{Binding Categorias}" EmptyView="Nenhum item encontrado">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Frame CornerRadius="10" HasShadow="True" Padding="5">
+                                <Grid Padding="10" ColumnSpacing="0" RowSpacing="0" Margin="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="180"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="{Binding CategoriaId}" HorizontalOptions="End"/>
+                                    <Image Grid.Row="1" Source="{Binding ImagemUrl}" Aspect="AspectFit"/>
+                                    <Label Grid.Row="2" Text="{Binding Nome}" TextColor="Magenta" HorizontalOptions="Center"/>
+                                </Grid>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
